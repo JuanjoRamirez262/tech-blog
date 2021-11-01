@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Tech Blog",
+        "content": "This blog is the best",
+        "user_id": "1"
+    },
+    {
+        "title": "Wow!",
+        "content": "This really work!",
+        "user_id": "2"
+    },
+    {
+        "title": "I found a bug",
+        "content": "There is no bug...",
+        "user_id": "3"
+    }
+]
