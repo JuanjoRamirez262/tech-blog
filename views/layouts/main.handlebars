@@ -13,11 +13,14 @@
     <h1>
       User Registry
     </h1>
-    {{#if logged_in}}
     <nav>
+    {{#if logged_in}}
       <button class="btn" id="logout">logout</button>
-    </nav>
     {{/if}}
+    {{#unless logged_in}}
+      <button class="btn" id="loginBtn">login</button>
+    {{/unless}}
+    </nav>
   </header>
   <main class="container container-fluid mt-5">
     {{{ body }}}
@@ -29,6 +32,10 @@
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  {{#unless logged_in}}
+  <script src="/js/goToLogin.js"></script>
+  {{/unless}}
+  <script src="/js/post.js"></script>
 </body>
 
 </html>
