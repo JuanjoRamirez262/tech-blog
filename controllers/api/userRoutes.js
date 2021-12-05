@@ -24,11 +24,27 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
   } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.put('/createUser', async (req, res) => {
+  try {
+    const user = await User.create({
+      name: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    })
+    if(!user){
+      return res.status(400).json({message: "somethinbg went wrong."})
+    }
+    res.status(200).json({message: "user created"})
+  } catch(err){
     res.status(400).json(err);
   }
 });

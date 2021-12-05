@@ -25,6 +25,17 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/createPost', (req,res) => {
+  if(!req.session.logged_in) {
+    res.render('login');
+    return;
+  }
+  res.render('createPost', {
+    logged_in: req.session.logged_in,
+    createForm: true
+  })
+})
+
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -46,21 +57,29 @@ router.get('/post/:id', async (req, res) => {
         },
         {
           model: Comment,
-          order: [['createdAt', 'DESC']]
+          order: [['createdAt', 'DESC']],
+          required: false
         }
       ],
-      order: [['createdAt', 'DESC']],
+      // raw:true
     })
-    // const posts = postData.map((project) => project.get({ plain: true }));
-    // res.render('post', {
-    //   posts,
-    //   logged_in: req.session.logged_in,
-    // })
-    res.json(posts)
+    // posts = posts.toJSON()
+    console.log(posts)
+    res.render('post', {
+      posts,
+      logged_in: req.session.logged_in,
+    })
+    // res.json(posts)
   } catch (err) {
     res.json(err)
   }
 
+})
+
+router.get('/signup', (req,res)=> {
+  res.render('signupForm', {
+    createUser:true
+  })
 })
 
 module.exports = router;

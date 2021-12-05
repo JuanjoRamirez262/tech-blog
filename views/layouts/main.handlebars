@@ -11,14 +11,16 @@
 <body>
   <header class="display-flex justify-space-between align-center p-2">
     <h1>
-      User Registry
+      Tech Blog
     </h1>
     <nav>
     {{#if logged_in}}
       <button class="btn" id="logout">logout</button>
+      <button class="btn" id="create">Create Post</button>
     {{/if}}
     {{#unless logged_in}}
       <button class="btn" id="loginBtn">login</button>
+      <button class="btn" id="signup">Sign up</button>
     {{/unless}}
     </nav>
   </header>
@@ -31,9 +33,17 @@
 
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
+  <script src="/js/createPost.js"></script>
+  {{/if}}
+  {{#if createForm}}
+  <script src="/js/submitForm.js"></script>
+  {{/if}}
+  {{#if createUser}}
+  <script src="/js/submitSignup.js"></script>
   {{/if}}
   {{#unless logged_in}}
   <script src="/js/goToLogin.js"></script>
+  <script src="/js/signup.js"></script>
   {{/unless}}
   <script src="/js/post.js"></script>
 </body>
