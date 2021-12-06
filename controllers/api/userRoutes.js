@@ -41,7 +41,7 @@ router.put('/createUser', async (req, res) => {
       password: req.body.password
     })
     if(!user){
-      return res.status(400).json({message: "somethinbg went wrong."})
+      return res.status(400).json({message: "something went wrong."})
     }
     res.status(200).json({message: "user created"})
   } catch(err){
